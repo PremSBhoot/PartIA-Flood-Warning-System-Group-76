@@ -33,3 +33,10 @@ def stations_by_rivers(stations):
                 stationsOnRiver.append(station.get_stationName())
         dict.update({val: stationsOnRiver})
     return dict 
+
+def rivers_by_station_number(stations,N):
+    stationsOfRivers = stations_by_rivers(stations)
+    listOfNumberStations = []
+    for river in stationsOfRivers:
+        listOfNumberStations.append((river, len(stationsOfRivers[river])))
+    return sorted_by_key(listOfNumberStations, 1, True)[:N]

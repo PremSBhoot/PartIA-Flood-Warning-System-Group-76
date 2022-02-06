@@ -54,4 +54,16 @@ class MonitoringStation:
     def get_typicalRange(self):
         return self.typical_range
         
-    
+    def typical_range_stations(self):
+        return self.typical_range == None or self.typical_range[1] < self.typical_range[1]
+        
+def inconsistent_typical_range_stations(stations):
+   stations_inconsistent = []
+   for station in stations:
+       if station.typical_range_stations():
+           stations_inconsistent.append(station.get_stationName())
+   return stations_inconsistent
+
+   
+
+
