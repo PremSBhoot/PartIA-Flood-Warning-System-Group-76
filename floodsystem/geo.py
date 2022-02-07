@@ -35,6 +35,8 @@ def stations_by_rivers(stations):
     return dict 
 
 def rivers_by_station_number(stations,N):
+    """function that uses stations_by_rivers to return a dictionary that it then
+    itterates each river for, summing the number of stations on the river into tuples"""
     stationsOfRivers = stations_by_rivers(stations)
     listOfNumberStations = []
     for river in stationsOfRivers:
