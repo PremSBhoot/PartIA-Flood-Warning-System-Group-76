@@ -41,4 +41,6 @@ def rivers_by_station_number(stations,N):
     listOfNumberStations = []
     for river in stationsOfRivers:
         listOfNumberStations.append((river, len(stationsOfRivers[river])))
-    return sorted_by_key(listOfNumberStations, 1, True)[:N]
+    while listOfNumberStations[N-1][1] == listOfNumberStations[N][1]:
+        N += 1
+    return sorted_by_key(listOfNumberStations, 1, True)[:N-1]
