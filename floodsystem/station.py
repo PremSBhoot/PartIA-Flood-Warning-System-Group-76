@@ -57,14 +57,14 @@ class MonitoringStation:
     def typical_range_stations(self):
         """function to check if typical range has a value or if the upper limit is lower than 
         the lower limit"""
-        return self.typical_range == None or self.typical_range[1] < self.typical_range[1]
+        return not(self.typical_range == None or self.typical_range[1] < self.typical_range[0])
         
 def inconsistent_typical_range_stations(stations):
    """function that itterates stations through typical_range_stations and creates a
    list of all stations that are returned"""
    stations_inconsistent = []
    for station in stations:
-       if station.typical_range_stations():
+       if not(station.typical_range_stations()):
            stations_inconsistent.append(station.get_stationName())
    return stations_inconsistent
 
