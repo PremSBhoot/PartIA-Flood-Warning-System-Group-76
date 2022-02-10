@@ -4,6 +4,7 @@ from attr import has
 from floodsystem.geo import stations_by_distance
 from floodsystem.stationdata import build_station_list
 from floodsystem.geo import rivers_by_station_number
+from floodsystem.station import MonitoringStation
 
 
 def test_stations_by_distance():
@@ -29,5 +30,10 @@ def test_stations_by_distance():
     assert len(rivers_by_station_number()) >= 10
     assert rivers_by_station_number[0][1] >= rivers_by_station_number[9][1]"""
 
-    
+
+def test_rivers_by_stations_number():
+    stations = build_station_list()
+    rivers_by_station_numbers = rivers_by_station_number(stations,10)
+    assert len(rivers_by_station_numbers) >= 9
+    assert rivers_by_station_numbers[0][1] > rivers_by_station_numbers[9][1]     
 
