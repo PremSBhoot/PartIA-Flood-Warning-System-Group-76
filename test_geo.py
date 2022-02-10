@@ -53,5 +53,8 @@ def test_rivers_by_stations_number():
     stations = build_station_list()
     rivers_by_station_numbers = rivers_by_station_number(stations,10)
     assert len(rivers_by_station_numbers) >= 9
-    assert rivers_by_station_numbers[0][1] > rivers_by_station_numbers[9][1]     
+    assert rivers_by_station_numbers[0][1] > rivers_by_station_numbers[1][1]
+    assert rivers_by_station_numbers[1][1] > rivers_by_station_numbers[2][1]
+    assert rivers_by_station_numbers[2][1] > rivers_by_station_numbers[5][1]
+    assert rivers_by_station_numbers[0][0] == "River Thames"   
 

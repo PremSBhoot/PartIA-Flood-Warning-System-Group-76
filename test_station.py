@@ -5,6 +5,7 @@
 
 from floodsystem.station import MonitoringStation
 from floodsystem.station import inconsistent_typical_range_stations
+from floodsystem.stationdata import build_station_list
 
 def test_create_monitoring_station():
 
@@ -28,8 +29,9 @@ def test_create_monitoring_station():
 
 def test_inconsistent_typical_range_stations():
         stations = build_station_list()
-        list_of_inconsistent = inconsistent_typical_range_stations(stations)
+        list_of_inconsistent = sorted(inconsistent_typical_range_stations(stations))
         assert len(list_of_inconsistent) == 28
-
+        assert type(list_of_inconsistent) is list
+        assert list_of_inconsistent[0] == "Airmyn"
 
 
