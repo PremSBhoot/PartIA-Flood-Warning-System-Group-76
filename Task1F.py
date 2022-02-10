@@ -11,5 +11,5 @@ def run():
     inconsistent_typical_range_stations"""
     print(sorted(inconsistent_typical_range_stations(stations)))
 if __name__ == "__main__":
-    print("***Task 1E: CUED Part 1A Flood Warning System")
+    print("***Task 1F: CUED Part 1A Flood Warning System")
     run()
