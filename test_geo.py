@@ -1,30 +1,57 @@
-# Copyright (C) 2018 Garth N. Wells
-#
-# SPDX-License-Identifier: MIT
-"""Unit test for the station module"""
 
+
+from attr import has
+from floodsystem.geo import rivers_with_stations, stations_by_distance, stations_within_radius
+from floodsystem.stationdata import build_station_list
+from floodsystem.geo import rivers_by_station_number
 from floodsystem.station import MonitoringStation
-from floodsystem.station import inconsistent_typical_range_stations
 
-def test_create_monitoring_station():
 
-    # Create a station
-    s_id = "test-s-id"
-    m_id = "test-m-id"
-    label = "some station"
-    coord = (-2.0, 4.0)
-    trange = (-2.3, 3.4445)
-    river = "River X"
-    town = "My Town"
-    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
+def test_stations_by_distance():
+    stations_list = build_station_list()
+    coord = (52.2053, 0.1218) 
+    stations_sorted_by_distance = stations_by_distance(stations_list, coord)
 
-    assert s.station_id == s_id
-    assert s.measure_id == m_id
-    assert s.name == label
-    assert s.coord == coord
-    assert s.typical_range == trange
-    assert s.river == river
-    assert s.town == town
+    assert "Cambridge Jesus Lock" in stations_sorted_by_distance[0][0]
+    assert round(stations_sorted_by_distance[0][2] - 0.8402364350834995, 5) == 0.0
 
-def test_inconsistent_typical_range_stations():
-    assert len(inconsistent_typical_range_stations) >= 1
+    sublist = stations_sorted_by_distance[:10]
+    assert len(sublist) == 10
+
+    for i in range (len(sublist) - 1):
+        print(i)
+        assert sublist[i][2] < sublist[i + 1][2]
+    
+    assert(type(stations_sorted_by_distance) is list)
+    assert(type(stations_sorted_by_distance[0]) is tuple)
+
+def test_stations_within_radius():
+    stations_list = build_station_list()
+    coord = (52.2053, 0.1218) 
+    stationsInRadius = stations_within_radius(stations_list, coord, 10)
+
+    stationNames = []
+    for station in stationsInRadius:
+        stationNames.append(station.get_stationName())
+    
+    assert("Bin Brook" in stationNames)
+    assert("Cambridge Baits Bite" in stationNames)
+    assert("Oakington" in stationNames)
+
+
+def test_rivers_with_stations():
+        stations_list = build_station_list()
+        rivers = rivers_with_stations(stations_list)
+
+        assert(len(rivers) == 950)
+        assert("River Thames" in rivers)
+        assert("River Severn" in rivers)
+
+
+
+def test_rivers_by_stations_number():
+    stations = build_station_list()
+    rivers_by_station_numbers = rivers_by_station_number(stations,10)
+    assert len(rivers_by_station_numbers) >= 9
+    assert rivers_by_station_numbers[0][1] > rivers_by_station_numbers[9][1]     
+
