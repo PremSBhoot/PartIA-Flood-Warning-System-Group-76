@@ -38,7 +38,7 @@ class MonitoringStation:
         d += "   river:         {}\n".format(self.river)
         d += "   typical range: {}".format(self.typical_range)
         return d
-    
+    #added getter methods for encapsulation - public interface to access private data 
     def get_stationName(self):
         return self.name
     def get_stationID(self):
