@@ -13,7 +13,7 @@ def run():
     print("10 closest stations from ", coord)
     print(stations_sorted_by_distance[:10])
 
-    #print 19 furthest stations from coordinate specified
+    #print 10 furthest stations from coordinate specified
     print("10 furthest stations from ", coord)
     print(stations_sorted_by_distance[-10:])
 
