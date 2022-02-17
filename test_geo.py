@@ -43,7 +43,7 @@ def test_rivers_with_stations():
         stations_list = build_station_list()
         rivers = rivers_with_stations(stations_list)
 
-        assert(len(rivers) == 950)
+        assert(len(rivers) >= 950)
         assert("River Thames" in rivers)
         assert("River Severn" in rivers)
 
