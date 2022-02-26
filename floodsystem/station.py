@@ -58,6 +58,13 @@ class MonitoringStation:
         """function to check if typical range has a value or if the upper limit is lower than 
         the lower limit"""
         return not(self.typical_range == None or self.typical_range[1] < self.typical_range[0])
+
+    def relative_water_level(self):
+        if(self.latest_level == None or not(self.typical_range_stations()) or self.latest_level>self.typical_range[1] or self.latest_level<self.typical_range[0]):
+            return None
+        else:
+            return((self.latest_level - self.typical_range[0])/(self.typical_range[1] - self.typical_range[0]))
+
         
 def inconsistent_typical_range_stations(stations):
    """function that itterates stations through typical_range_stations and creates a
