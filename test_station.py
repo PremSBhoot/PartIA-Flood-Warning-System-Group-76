@@ -6,7 +6,7 @@
 from floodsystem.station import MonitoringStation
 from floodsystem.station import inconsistent_typical_range_stations
 from floodsystem.stationdata import build_station_list
-
+from floodsystem.stationdata import build_station_list, update_water_levels
 def test_create_monitoring_station():
 
     # Create a station
@@ -30,8 +30,28 @@ def test_create_monitoring_station():
 def test_inconsistent_typical_range_stations():
         stations = build_station_list()
         list_of_inconsistent = sorted(inconsistent_typical_range_stations(stations))
-        assert len(list_of_inconsistent) == 28
+        assert len(list_of_inconsistent) > 20
         assert type(list_of_inconsistent) is list
-        assert list_of_inconsistent[0] == "Airmyn"
+
+def test_relative_water_level():
+    s_id = "test-s-id"
+    m_id = "test-m-id"
+    label = "some station"
+    coord = (-2.0, 4.0)
+    trange = (0.5, 1.5)
+    river = "River X"
+    town = "My Town"
+    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
+
+    s.set_latestLevel(1)
+    assert s.relative_water_level() == 0.5
+
+    trangeNew = (4, 3)
+    s.set_typicalRange(trangeNew)
+    assert s.relative_water_level() == None
+
+
+
+
 
 

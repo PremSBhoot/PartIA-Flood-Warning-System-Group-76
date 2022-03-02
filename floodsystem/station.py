@@ -53,6 +53,10 @@ class MonitoringStation:
         return self.river
     def get_typicalRange(self):
         return self.typical_range
+    def set_latestLevel(self, val):
+        self.latest_level = val
+    def set_typicalRange(self, val):
+        self.typical_range = val
         
     def typical_range_stations(self):
         """function to check if typical range has a value or if the upper limit is lower than 
