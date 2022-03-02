@@ -21,6 +21,9 @@ def risk_calculation():
             print("Insufficient data to complete risk calculation for", val[0].get_stationName())
             continue
        
+        """gets polynomial fit for data, differentiates to find rate of change, criteria listed below then
+        determine whether severe, high, moderate low - perhaps in the future use an algorithm where we multiply values
+        to determine rates of changes, possibly consider second derivative aswell and model future - or use time series - fourier transform, machine learning"""
         poly,offset = polyfit(dates,levels, p)
         derivative = np.polyder(poly)
         dates = (date.date2num(dates)) 
