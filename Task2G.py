@@ -42,7 +42,7 @@ def risk_calculation():
         elif((val[1] > 1.3) or (val[1]> 1.1 and currentRate > 1) or (val[1]> 1 and currentRate > 2)):
             risk.append((val[0], "High"))
             print(val[0].get_stationName(), " High")
-        elif((val[1] > 1.1) or (val[1]> 1 and currentRate > 1) or (val[1]> 0.85 and currentRate > 2)  or (val[1]> 0.8 and currentRate > 2.5) or (val[1]>0.6 and currentRate>3):
+        elif((val[1] > 1.1) or (val[1]> 1 and currentRate > 1) or (val[1]> 0.85 and currentRate > 2)  or (val[1]> 0.8 and currentRate > 2.5) or (val[1]>0.6 and currentRate>3)):
             risk.append((val[0], "Moderate"))
             print(val[0].get_stationName(), " Moderate")
         else:
