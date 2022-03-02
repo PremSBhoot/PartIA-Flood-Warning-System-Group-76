@@ -16,7 +16,10 @@ def risk_calculation():
     stationsLevels = stations_level_over_threshold(stations_input, 0)
     p=4
     for val in stationsLevels:
-        dates,levels = fetch_measure_levels(val[0].get_measureID(), datetime.timedelta(days = 2))
+        try:
+            dates,levels = fetch_measure_levels(val[0].get_measureID(), datetime.timedelta(days = 2))
+        except:
+            print("Unavailable")
         if(len(levels)<15):
             print("Insufficient data to complete risk calculation for", val[0].get_stationName())
             continue

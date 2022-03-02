@@ -4,7 +4,7 @@ from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.flood import stations_highest_rel_level
 
 
-def test_relative_water_level():
+def test_stations_level_over_threshold():
     stations_input = build_station_list()
     rel_level = 0.8
     update_water_levels(stations_input)
