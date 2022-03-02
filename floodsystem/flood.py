@@ -15,8 +15,7 @@ def stations_highest_rel_level(stations,N):
     for station in stations:
         if station.relative_water_level() == None:
             continue
-        else:
-            
+        else: 
             list_of_highest_rel.append((station, station.relative_water_level()))
     return (sorted_by_key(list_of_highest_rel, 1, True))[:N]
 
