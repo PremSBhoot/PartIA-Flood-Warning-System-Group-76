@@ -60,6 +60,12 @@ class MonitoringStation:
         return not(self.typical_range == None or self.typical_range[1] < self.typical_range[0])
 
     def relative_water_level(self):
+        """
+        function to calculate relative water level,
+        if there is no current value for level at station or
+        typical range is inconsistent, return none
+        
+        else return the relative water level, formula to be seen in code.."""
         if(self.latest_level == None or not(self.typical_range_stations())):
             return None
         else:
