@@ -21,7 +21,7 @@ def rivers_with_stations(stations):
     """rivers = []
     for station in stations:
         if not(station.get_river() in rivers):
-            rivers.append(station.get_river())
+            rivers.1append(station.get_river())
     return rivers"""
     
 def stations_by_rivers(stations):

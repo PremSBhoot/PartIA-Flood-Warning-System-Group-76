@@ -41,3 +41,4 @@ def plot_water_level_with_fit(station, dates, levels, p):
     plt.title(station.get_stationName())
     plt.legend(["Polynomial fit", "Data levels", "Typical Low", "Typical High"])
     plt.show()
+    
